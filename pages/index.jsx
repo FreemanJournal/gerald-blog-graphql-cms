@@ -1,13 +1,12 @@
 import Head from 'next/head'
 import { ArticleCard, ArticleWidget, Categories, Header } from '../components'
-const posts = [
-  { title: "React Testing", excerpt: 'Learn React Testing' },
-  { title: "React With JSM", excerpt: 'Learn React Tailwind Testing' }
-]
-
-const Home = () => {
+import {getPosts} from '../services/index'
 
 
+const Home = ({posts}) => {
+
+  
+// console.log('posts',posts);
   return (
     <div className="container mx-auto lg:w-10/12 px-10 mb-8 bg-gray-100">
       <Head>
@@ -32,4 +31,11 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Home;
+
+export async function getStaticProps(){
+  const posts = await getPosts() || []
+  return {
+    props:{ posts}
+  }
+}
