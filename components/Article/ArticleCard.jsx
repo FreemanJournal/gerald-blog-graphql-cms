@@ -8,7 +8,6 @@ import { BsCalendar2, BsChatRightText, BsFolder } from 'react-icons/bs';
 const ArticleCard = ({ post }) => {
     const [manage, setManage] = useState(false);
     const router = useRouter()
-    console.log(' post.node', post.node);
     const { _id, author,featuredImage, title, excerpt,categories, createdAt, likeCount, slug } = post.node || {}
 
     return (

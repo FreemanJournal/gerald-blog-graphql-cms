@@ -33,7 +33,7 @@ const ArticleWidget = ({ categories, slug }) => {
 
       {
         relatedPosts?.map((post, index) => (
-          <div className="flex items-center w-full mb-4">
+          <div className="flex items-center w-full mb-4" key={index}>
             <div className="w-16 flex-none">
               <img src={post.featuredImage.url} alt={post.title} height="60px" width="60px" className='align-middle rounded-md' />
             </div>

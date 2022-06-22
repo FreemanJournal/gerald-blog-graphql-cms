@@ -75,7 +75,39 @@ export const getSimilarPost = async () => {
   return results.posts;
 }
 
-export const getCategories = async () =>{
+export const getArticleDetails = async (slug) => {
+  const query = gql`
+   query MyQuery($slug:String!) {
+      post(where: {slug:$slug}) {
+        content {
+          html
+          markdown
+        }
+        featuredImage {
+          url
+        }
+        author {
+          name
+          photo {
+            url
+          }
+          bio
+        }
+        createdAt
+        categories {
+          name
+          slug
+        }
+        title
+        slug
+      }
+    }
+  `
+  const result = await request(graphqlAPI,query,{slug})
+  return result.post;
+}
+
+export const getCategories = async () => {
   const query = gql`
     query GetCategories{
       categories{
@@ -85,6 +117,15 @@ export const getCategories = async () =>{
     }
   `
 
-const results = await request(graphqlAPI, query)
-return results.categories;
+  const results = await request(graphqlAPI, query)
+  return results.categories;
+}
+
+export const submitComment = async (obj) =>{
+  const result = await fetch('/api/comments',{
+    method:"POST",
+    body:JSON.stringify(obj)
+  })
+
+  return result.json();
 }
