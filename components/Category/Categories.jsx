@@ -10,9 +10,18 @@ const Categories = () => {
   }, [])
   return (
     <div className='bg-white shadow-lg rounded-lg p-8 mb-8 pb-12'>
-      <h3 className='text-xl mb-8 font-semibold border-b pb-4'>
+     
+      <div className="flex items-center  flex-col">
+        <h3 className='text-2xl font-semibold'>
         Categories
-      </h3>
+        </h3>
+        <div className="pb-2">
+          <span className="inline-block w-24 h-[.1rem] rounded-full bg-emerald-400"></span>
+          <span className="inline-block w-3 h-[.1rem] ml-1 rounded-full bg-emerald-400"></span>
+          <span className="inline-block w-1 h-[.1rem] ml-1 rounded-full bg-emerald-400"></span>
+        </div>
+
+      </div>
       {
         categories?.map((category,index)=>(
           <Link key={category.slug} href={`/category/${category.slug}`}>

@@ -40,7 +40,7 @@ export default function Navbar() {
                 {/* Desktop Menu */}
                 <div className=" flex-1 flex items-center justify-center sm:items-stretch sm:justify-between mt-10 pointer-events-auto">
                   <div className="flex-shrink-0 flex items-center">
-                    <h1 className='text-slate-600 drop-shadow-lg uppercase text-2xl tracking-wide font-mont font-bold cursor-pointer pointer-events-auto'  >The green warehouse</h1>
+                    <h1 className='text-slate-600 drop-shadow-lg uppercase text-2xl tracking-wide font-mont font-bold cursor-pointer pointer-events-auto'  >Dev Blog</h1>
                   </div>
                   <div className="hidden sm:block sm:ml-6">
                     <div className="flex space-x-4 my-5">
