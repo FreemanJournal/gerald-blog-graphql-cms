@@ -1,17 +1,15 @@
 import moment from 'moment';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState } from 'react';
-import { BsHeart, BsCalendar, BsCalendar2, BsFile, BsTextarea, BsChatRightText, BsTag, BsFolder } from 'react-icons/bs';
-import { FiEdit } from 'react-icons/fi';
-import { useNavigate } from 'react-router-dom';
-import UserIntro from '../utilities/UserIntro';
-import styles from './ArticleCard.module.css'
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import { BsCalendar2, BsChatRightText, BsFolder } from 'react-icons/bs';
 // import ManageBlog from '../ManageBlog/ManageBlog';
 const ArticleCard = ({ post }) => {
     const [manage, setManage] = useState(false);
-    // console.log(' post.node', post.node);
-    const { _id, author,featuredImage, title, excerpt, createdAt, likeCount, slug } = post.node || {}
+    const router = useRouter()
+    console.log(' post.node', post.node);
+    const { _id, author,featuredImage, title, excerpt,categories, createdAt, likeCount, slug } = post.node || {}
 
     return (
         <div className="blogCard mb-10 pb-5 border-b-2 border-slate-300 mt-10 bg-slate-100 p-10 rounded-md">
@@ -31,7 +29,7 @@ const ArticleCard = ({ post }) => {
                 </div>
             </div> */}
             <Link href={`/article/${slug}`}>
-                <div className="para-section mt-5 hover:cursor-pointer" onClick={() => navigate(`/single-blog/${_id}`)}>
+                <div className="para-section mt-5 hover:cursor-pointer" >
                     <div className=" ">
                         <div className="flex  gap-4">
                             <div className="w-32 h-32 relative">
@@ -51,7 +49,7 @@ const ArticleCard = ({ post }) => {
                                     </div>
                                     <div className="date flex gap-1 items-center text-slate-400">
                                         <BsFolder />
-                                        <span>{slug}</span>
+                                        <span>{categories[0].name}</span>
                                     </div>
                                     <div className="date flex gap-1 items-center text-slate-400">
                                         <BsChatRightText />
