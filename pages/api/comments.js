@@ -2,20 +2,28 @@ import { gql, GraphQLClient } from 'graphql-request'
 import React from 'react'
 
 const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT
-
+const graphToken = process.env.NEXT_PUBLIC_GRAPHCMS_TOKEN
 export default async function comments(req, res) {
-    const graphQLclient = new GraphQLClient(graphqlAPI, {
+    // console.log('graphToken',graphToken);
+    const graphQLclient = new GraphQLClient((graphqlAPI), {
         headers: {
-            authorization: `Bearer ${process.env.NEXT_PUBLIC_GRAPHCMS_TOKEN}`
+            authorization: `Bearer ${graphToken}`
         }
     })
 
     const query = gql`
-        mutation CreateComment($name:String!,$email:String!,$comment:String!,$slug:String!){
-            createComment(data:{name:$name,email:$email,comment:$comment,post:{connect:{slug:$slug}}}){id}
+        mutation CreateComment($comment:String!,$email:String!,$name:String!,$slug:String!){
+            createComment(data:{comment:$comment,email:$email,name:$name,post:{connect:{slug:$slug}}}){id}
         }
     `
+    try {
+        const result = await graphQLclient.request(query, req.body)
 
-    const result = await graphQLclient.request(query, req.body)
-    return res.status(200).send(result);
+        return res.status(200).send(result);
+        
+    } catch (error) {
+       
+        
+    }
+   
 }

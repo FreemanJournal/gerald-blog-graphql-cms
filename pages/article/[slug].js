@@ -6,7 +6,7 @@ import { getArticleDetails } from '../../services';
 const ArticleDetails = ({article}) => {
 
   
- console.log('article',article);
+
 
   return (
     <div className="container mx-auto lg:w-10/12 px-10 mb-8 ">

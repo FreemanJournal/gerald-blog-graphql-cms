@@ -1,15 +1,24 @@
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import { submitComment } from '../../services';
 export default function NewComments({slug}) {
 
-    const { register, handleSubmit, watch,setValue, formState: { errors } } = useForm();
+    const { register, handleSubmit,reset, watch,setValue, formState: { errors } } = useForm();
 
 
 
     const onSubmitHandler = (value) =>{
+        
         submitComment(value)
         .then((res)=>{
-            console.log(res);
+            console.log('response',res);
+            if(res?.createComment?.id){
+                toast.success("You have commented successfully.", {
+                    theme: "dark"
+                  })
+                  reset();
+            }
+           
         })
 
     }

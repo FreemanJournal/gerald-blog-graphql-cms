@@ -7,7 +7,7 @@ export default function Comments({slug}) {
   return (
     <div className='mx-auto '>
       <NewComments slug={slug}/>
-      <UserComments />
+      <UserComments  slug={slug}/>
     </div >
   )
 }

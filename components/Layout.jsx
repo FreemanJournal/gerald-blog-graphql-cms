@@ -4,7 +4,7 @@ import {Header,Footer} from './'
 const Layout = ({children}) => {
   return (
     <>
-    <ToastContainer/>
+  
     <Header/>
     {children}
     <Footer/>

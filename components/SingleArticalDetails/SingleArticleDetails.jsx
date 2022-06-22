@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { BsCalendar2, BsChatRightText, BsFolder, BsHeart } from 'react-icons/bs';
-import Comments from './Comments';
+import Comments from '../Comment/Comments';
 import Image from "next/image"
 import AuthorIntro from './AuthorIntro';
 
