@@ -1,8 +1,7 @@
-import Head from 'next/head'
-import { useEffect, useState } from 'react';
-import { ArticleWidget, Categories } from '../../components'
-import SingleArticleDetails from '../../components/SingleArticalDetails/SingleArticleDetails'
-import { getArticleDetails, getCategories } from '../../services';
+import Head from 'next/head';
+import { ArticleWidget, Categories } from '../../components';
+import SingleArticleDetails from '../../components/SingleArticalDetails/SingleArticleDetails';
+import { getArticleDetails } from '../../services';
 
 const ArticleDetails = ({article}) => {
  

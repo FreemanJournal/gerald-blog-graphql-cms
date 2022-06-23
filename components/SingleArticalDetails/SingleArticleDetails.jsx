@@ -1,18 +1,13 @@
 import moment from 'moment';
-import { BsCalendar2, BsChatRightText, BsFolder, BsHeart } from 'react-icons/bs';
+import Image from "next/image";
+import { BsCalendar2, BsChatRightText, BsFolder } from 'react-icons/bs';
 import Comments from '../Comment/Comments';
-import Image from "next/image"
 import AuthorIntro from './AuthorIntro';
 
 export default function SingleArticleDetails({ article }) {
     const { content, featuredImage, author, createdAt, categories, title,slug,comments } = article || {}
 
-    // const [comments, setComments] = useState([]);
-
-    // useEffect(() => {
-    //     getComments(slug)
-    //         .then(res => setComments(res))
-    // }, [])
+   
 
     return (
         <div className=''>
@@ -30,7 +25,7 @@ export default function SingleArticleDetails({ article }) {
                         </div>
                         <div className="w-full">
 
-                            <div className="my-3 flex gap-4">
+                            <div className="my-3 flex gap-4 text-sm md:text-base">
                                 <div className="date flex gap-1 items-center text-slate-400">
                                     <BsCalendar2 />
                                     <span>{moment(createdAt).format('MMMM Do YYYY')}</span>

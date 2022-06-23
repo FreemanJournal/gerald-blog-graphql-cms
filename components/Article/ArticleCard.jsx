@@ -30,7 +30,7 @@ const ArticleCard = ({ post }) => {
             <Link href={`/article/${slug}`}>
                 <div className="para-section mt-5 hover:cursor-pointer" >
                     <div className=" ">
-                        <div className="flex  gap-4">
+                        <div className="flex  flex-col md:flex-row gap-4">
                             <div className="w-32 h-32 relative">
                                 <Image
                                     layout='fill'
@@ -39,9 +39,9 @@ const ArticleCard = ({ post }) => {
                                     alt=""
                                 />
                             </div>
-                            <div className="w-3/4">
+                            <div className="w-full md:w-3/4">
                                 <h2 className={`text-3xl  font-bold text-slate-600 underline decoration-transparent duration-300 hover:decoration-emerald-400 `} >{title}</h2>
-                                <div className="my-3 flex gap-4">
+                                <div className="my-3 flex gap-4  text-xs md:text-base">
                                     <div className="date flex gap-1 items-center text-slate-400">
                                         <BsCalendar2 />
                                         <span>{moment(createdAt).format('MMMM Do YYYY')}</span>
