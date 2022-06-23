@@ -5,16 +5,14 @@ import Image from "next/image"
 import AuthorIntro from './AuthorIntro';
 
 export default function SingleArticleDetails({ article }) {
-    const { content, featuredImage, author, createdAt, categories, title,slug } = article || {}
+    const { content, featuredImage, author, createdAt, categories, title,slug,comments } = article || {}
 
-    // const { blogId } = useParams();
+    // const [comments, setComments] = useState([]);
 
-    // if (!singleArticle) {
-    //     return <Loader />
-    // }
-
-
-    // const { _id, img, blogWriter, date, title, description, tags, commentCount, content, likeCount } = singleArticle || {}
+    // useEffect(() => {
+    //     getComments(slug)
+    //         .then(res => setComments(res))
+    // }, [])
 
     return (
         <div className=''>
@@ -43,7 +41,7 @@ export default function SingleArticleDetails({ article }) {
                                 </div>
                                 <div className="date flex gap-1 items-center text-slate-400">
                                     <BsChatRightText />
-                                    <span>7 Comments</span>
+                                    <span>{comments?.length || 0} Comments</span>
                                 </div>
                             </div>
                         </div>

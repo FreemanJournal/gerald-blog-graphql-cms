@@ -8,7 +8,7 @@ import { BsCalendar2, BsChatRightText, BsFolder } from 'react-icons/bs';
 const ArticleCard = ({ post }) => {
     const [manage, setManage] = useState(false);
     const router = useRouter()
-    const { _id, author,featuredImage, title, excerpt,categories, createdAt, likeCount, slug } = post.node || {}
+    const { _id, author,featuredImage, title, excerpt,categories, createdAt, likeCount, slug,comments } = post.node || {}
 
     return (
         <div className="blogCard mb-10 pb-5 border-b-2 border-slate-300 mt-10 bg-slate-100 p-10 rounded-md">
@@ -52,7 +52,7 @@ const ArticleCard = ({ post }) => {
                                     </div>
                                     <div className="date flex gap-1 items-center text-slate-400">
                                         <BsChatRightText />
-                                        <span>7 Comments</span>
+                                        <span>{comments?.length || 0} Comments</span>
                                     </div>
                                 </div>
                             </div>

@@ -6,7 +6,6 @@ import { getArticleDetails, getCategories } from '../../services';
 
 const ArticleDetails = ({article}) => {
  
-console.log('categories',article.categories);
   return (
     <div className="container mx-auto lg:w-10/12 px-10 mb-8 ">
       <Head>
