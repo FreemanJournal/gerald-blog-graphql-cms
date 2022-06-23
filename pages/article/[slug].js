@@ -1,13 +1,12 @@
 import Head from 'next/head'
+import { useEffect, useState } from 'react';
 import { ArticleWidget, Categories } from '../../components'
 import SingleArticleDetails from '../../components/SingleArticalDetails/SingleArticleDetails'
-import { getArticleDetails } from '../../services';
+import { getArticleDetails, getCategories } from '../../services';
 
 const ArticleDetails = ({article}) => {
-
-  
-
-
+ 
+console.log('categories',article.categories);
   return (
     <div className="container mx-auto lg:w-10/12 px-10 mb-8 ">
       <Head>
@@ -21,7 +20,7 @@ const ArticleDetails = ({article}) => {
         </div>
         <div className="col-span-1 lg:col-span-4 ">
           <div className="lg:sticky top-10  mt-10">
-            <ArticleWidget />
+            <ArticleWidget slug={article.slug} categories={article.categories?.map((item,index)=>item.slug)}/>
             <Categories />
           </div>
         </div>

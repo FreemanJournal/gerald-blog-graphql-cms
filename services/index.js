@@ -3,7 +3,10 @@ const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
 export const getPosts = async () => {
   const query = gql`
     query MyQuery {
-        postsConnection {
+        postsConnection(
+        orderBy: createdAt_DESC
+       
+        ) {
           edges {
             node {
               author {
@@ -25,6 +28,9 @@ export const getPosts = async () => {
                 name
                 slug
               }
+              comments {
+                comment
+              }
             }
           }
         }
@@ -38,7 +44,7 @@ export const getRecentPost = async () => {
   const query = gql`
     query GetPostDetails(){
       posts(
-        orderBy: createdAt_ASC
+        orderBy: createdAt_DESC
         last:3
         ){
           title
@@ -55,9 +61,9 @@ export const getRecentPost = async () => {
   return results.posts;
 }
 
-export const getSimilarPost = async () => {
+export const getSimilarPost = async (categories, slug) => {
   const query = gql`
-  query GetPostsDetails($slug:String!,$categories:[String!]){
+  query GetSimilarPosts($slug:String!,$categories:[String!]){
     posts(
       where:{slug_not:$slug,AND: {categories_some:{slug_in:$categories}}}
       last:3
@@ -71,7 +77,7 @@ export const getSimilarPost = async () => {
     }
   }
   `
-  const results = await request(graphqlAPI, query)
+  const results = await request(graphqlAPI, query, { categories, slug })
   return results.posts;
 }
 
@@ -103,7 +109,7 @@ export const getArticleDetails = async (slug) => {
       }
     }
   `
-  const result = await request(graphqlAPI,query,{slug})
+  const result = await request(graphqlAPI, query, { slug })
   return result.post;
 }
 
@@ -121,13 +127,13 @@ export const getCategories = async () => {
   return results.categories;
 }
 
-export const submitComment = async (obj) =>{
-  const result = await fetch('/api/comments',{
-    method:"POST",
-    headers:{
-      'Content-Type':'application/json'
+export const submitComment = async (obj) => {
+  const result = await fetch('/api/comments', {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json'
     },
-    body:JSON.stringify(obj)
+    body: JSON.stringify(obj)
   })
 
   return result.json();
@@ -144,6 +150,6 @@ export const getComments = async (slug) => {
     }
   `
 
-  const results = await request(graphqlAPI, query,{slug})
+  const results = await request(graphqlAPI, query, { slug })
   return results.comments;
 }

@@ -13,7 +13,7 @@ export default function NewComments({slug}) {
         .then((res)=>{
             console.log('response',res);
             if(res?.createComment?.id){
-                toast.success("You have commented successfully.", {
+                toast.success("Your comment submitted for review", {
                     theme: "dark"
                   })
                   reset();

@@ -41,7 +41,7 @@ const ArticleWidget = ({ categories, slug }) => {
               <p className='text-grey-500 text-xs'>
                 {moment(post.createdAt).format('MMMM DD, YYYY')}
               </p>
-              <Link href={`/post/${post.slug}`} className="" key={post.title}><span className='text-slate-500  hover:text-slate-900  cursor-pointer  text-sm'>{post.title}</span></Link>
+              <Link href={`/article/${post.slug}`} className="" key={post.title}><span className='text-slate-500  hover:text-slate-900  cursor-pointer  text-sm'>{post.title}</span></Link>
             </div>
           </div>
         ))

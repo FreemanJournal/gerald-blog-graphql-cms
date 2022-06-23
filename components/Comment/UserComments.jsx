@@ -15,7 +15,7 @@ export default function UserComments({ slug }) {
         <div className="flex flex-col gap-4">
             <div className="flex items-center  flex-col">
                 <h3 className='text-2xl font-semibold'>
-                    Comments
+                    Comments ({comments.length || 0})
                 </h3>
                 <div className="pb-2">
                     <span className="inline-block w-24 h-[.1rem] rounded-full bg-emerald-400"></span>

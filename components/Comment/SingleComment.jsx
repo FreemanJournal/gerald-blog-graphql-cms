@@ -1,3 +1,4 @@
+import moment from 'moment'
 import React from 'react'
 
 export default function SingleComment({ comment }) {
@@ -20,7 +21,8 @@ export default function SingleComment({ comment }) {
             <div className='py-2 px-2 flex items-center justify-between bg-zinc-100'>
                 {/* <UserIntro /> */}
                 {/* <BsFillTrashFill className='hover:text-red-600 text-slate-500'/> */}
-                {comment.name}
+               <span> {comment.name}</span>
+               <span>{moment(comment.createdAt).format('MMMM DD, YYYY')}</span>
 
             </div>
         </div>
