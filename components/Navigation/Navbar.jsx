@@ -38,7 +38,7 @@ export default function Navbar() {
                   </Disclosure.Button>
                 </div>
                 {/* Desktop Menu */}
-                <div className=" flex-1 flex items-center justify-center sm:items-stretch sm:justify-between mt-10 pointer-events-auto">
+                <div className=" flex-1 flex items-center justify-center sm:items-stretch sm:justify-between mt-10 pointer-events-auto border-b-2">
                   <div className="flex-shrink-0 flex items-center">
                     <h1 className='text-slate-600 drop-shadow-lg uppercase text-2xl tracking-wide font-mont font-bold cursor-pointer pointer-events-auto'> <Link href="/">Dev Blog</Link> </h1>
                   </div>
