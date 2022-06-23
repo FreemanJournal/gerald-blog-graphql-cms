@@ -61,12 +61,7 @@ const Home = ({ posts }) => {
 
 export default Home;
 
-export const getStaticPaths = async () => {
-  return {
-      paths: [],
-      fallback: "blocking"
-  }
-}
+
 
 export async function getStaticProps() {
   const posts = await getPosts() || []
